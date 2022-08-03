@@ -2,6 +2,7 @@ import './App.css';
 
 import TopButtons from './components/TopButtons';
 import Inputs from './components/Inputs';
+import TimeAndLocation from './components/TimeAndLocation';
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
 
     <TopButtons />
     <Inputs />
-      
+
+    <TimeAndLocation /> 
+
     </div>
   ); 
 }
