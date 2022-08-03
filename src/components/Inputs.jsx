@@ -1,5 +1,10 @@
 import React from 'react';
-import { UilSearch, UilLocationPoint } from '@iconscout/react-unicons';
+import { 
+    UilSearch, 
+    UilLocationPoint,
+    UilCelsius,
+    UilFahrenheit
+} from '@iconscout/react-unicons';
 
 function Inputs() {
     return (
@@ -61,7 +66,7 @@ function Inputs() {
                         font-light
                     '
                 >
-                    °C
+                    <UilCelsius />
                 </button>
                 <p
                     className='
@@ -77,7 +82,7 @@ function Inputs() {
                         font-light
                     '
                 >
-                    °F
+                    <UilFahrenheit />
                 </button>
 
 
