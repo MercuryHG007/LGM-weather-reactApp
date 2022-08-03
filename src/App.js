@@ -1,6 +1,7 @@
 import './App.css';
 
 import TopButtons from './components/TopButtons';
+import Inputs from './components/Inputs';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
     >
 
     <TopButtons />
+    <Inputs />
       
     </div>
   ); 
