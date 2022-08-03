@@ -6,7 +6,17 @@ import TimeAndLocation from './components/TimeAndLocation';
 import TempAndDetails from './components/TempAndDetails';
 import Forecast from './components/Forecast';
 
+import getFormatedWeatherData from './services/weatherService';
+
 function App() {
+
+  const fetchWeather = async () => {
+    const data = await getFormatedWeatherData({q: 'Ghaziabad'});
+    console.log(data);
+  }
+
+  fetchWeather(); 
+
   return (
     <div
       className='
@@ -31,7 +41,7 @@ function App() {
     <TempAndDetails />
 
     <Forecast title="Hourly Forecast" />
-    <Forecast title="Weekly Forecast" />
+    <Forecast title="Daily Forecast" />
 
     </div>
   ); 

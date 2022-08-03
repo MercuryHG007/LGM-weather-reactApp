@@ -61,6 +61,7 @@ function Inputs() {
                 '
             >
                 <button 
+                    name='metric'
                     className='
                         text-xl text-white
                         font-light
@@ -76,7 +77,8 @@ function Inputs() {
                 >
                     |
                 </p>
-                <button 
+                <button
+                    name='imperial'
                     className='
                         text-xl text-white
                         font-light
