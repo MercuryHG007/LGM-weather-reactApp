@@ -33,6 +33,7 @@ function TempAndDetails({
                     items-center justify-center
                     py-6
                     text-xl text-cyan-300
+                    capitalize
                 '
             >
                 <p> {details} </p>
