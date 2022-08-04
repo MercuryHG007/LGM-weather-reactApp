@@ -2,7 +2,6 @@ import React from 'react'
 import { iconUrlFromCode } from '../services/weatherService'
 
 function Forecast({title, items}) {
-    console.log(items);
     return (
         <div>
             <div
@@ -26,12 +25,13 @@ function Forecast({title, items}) {
                     text-white
                 '
             >
-            {items && items.map((item, index) => (
+            {items && items.map((item,index) => (
                 <div
                     className='
                         flex flex-col
                         items-center justify-center
                     '
+                    key={index}
                 >
                     <p className='font-light text-sm'> {item.title} </p>
                     <img

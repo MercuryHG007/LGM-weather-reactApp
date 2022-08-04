@@ -43,27 +43,31 @@ function App() {
         '
     >
 
-    <TopButtons />
-    <Inputs />
+    <TopButtons 
+      setQuery={setQuery}
+    />
+
+    <Inputs 
+    />
 
     {weather && (
       <div>
         <TimeAndLocation 
           weather={weather}
         /> 
+
         <TempAndDetails 
-          weather ={weather}
+          weather={weather}
         />
 
         <Forecast 
           title="Hourly Forecast"
           items = {weather.hourly} 
-
         />
+
         <Forecast 
           title="Daily Forecast"
           items = {weather.daily} 
-
         />
       </div>
     )}

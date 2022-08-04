@@ -65,6 +65,7 @@ function Inputs() {
                     className='
                         text-xl text-white
                         font-light
+                        transition ease-out hover:scale-125
                     '
                 >
                     <UilCelsius />
@@ -72,7 +73,7 @@ function Inputs() {
                 <p
                     className='
                         text-xl text-white
-                        mx-1
+                        mx-2
                     '
                 >
                     |
@@ -82,6 +83,7 @@ function Inputs() {
                     className='
                         text-xl text-white
                         font-light
+                        transition ease-out hover:scale-125
                     '
                 >
                     <UilFahrenheit />

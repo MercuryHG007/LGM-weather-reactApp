@@ -39,7 +39,9 @@ function TopButtons({ setQuery }) {
                         text-white 
                         text-lg 
                         font-medium
+                        transition ease-out hover:scale-95
                     "
+                    onClick={() => setQuery({q: city.title})}
                 >
                     {city.title}
                 </button>
