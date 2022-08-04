@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
     UilSearch, 
     UilLocationPoint,
@@ -6,7 +6,37 @@ import {
     UilFahrenheit
 } from '@iconscout/react-unicons';
 
-function Inputs() {
+function Inputs({ setQuery, units, setUnits }) {
+
+    const [city, setCity] = useState('');
+
+    const handleSearchClick = () => {
+        if(city !== ''){
+            setQuery({q: city})
+        }
+    }
+
+    const handleLocationClick = () => {
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((position) => {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+
+                setQuery({
+                    lat,
+                    lon,
+                })
+            })
+        }
+    }
+
+    const handleUnitChange = (e) => {
+        const selectedUnit = e.currentTarget.name;
+        if(units !== selectedUnit){
+            setUnits(selectedUnit);
+        }
+    }
+
     return (
         <div
             className='
@@ -24,6 +54,8 @@ function Inputs() {
                 '
             >
                 <input 
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                     type="text"
                     className='
                         text-xl font-light
@@ -36,22 +68,31 @@ function Inputs() {
                     '
                     placeholder='Search for city....'
                 />
-                <UilSearch 
-                    size={25}
-                    className="
-                        text-white
-                        cursor-pointer
-                        transition ease-out hover:scale-125
-                    "
-                />
-                <UilLocationPoint 
-                    size={25}
-                    className="
-                        text-white
-                        cursor-pointer
-                        transition ease-out hover:scale-125
-                    "
-                />
+                <button
+                    onClick={handleSearchClick}
+                >
+                    <UilSearch 
+                        size={25}
+                        className="
+                            text-white
+                            cursor-pointer
+                            transition ease-out hover:scale-125
+                        "
+                    />
+                </button>
+
+                <button
+                    onClick={handleLocationClick}
+                >
+                    <UilLocationPoint 
+                        size={25}
+                        className="
+                            text-white
+                            cursor-pointer
+                            transition ease-out hover:scale-125
+                        "
+                    />
+                </button>
             </div>
 
             <div
@@ -67,6 +108,7 @@ function Inputs() {
                         font-light
                         transition ease-out hover:scale-125
                     '
+                    onClick={handleUnitChange}
                 >
                     <UilCelsius />
                 </button>
@@ -85,6 +127,7 @@ function Inputs() {
                         font-light
                         transition ease-out hover:scale-125
                     '
+                    onClick={handleUnitChange}
                 >
                     <UilFahrenheit />
                 </button>

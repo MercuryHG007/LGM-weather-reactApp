@@ -13,7 +13,7 @@ import getFormatedWeatherData from './services/weatherService';
 function App() {
 
   const [query, setQuery] = useState({q: "ghaziabad"});
-  const [units, setunits] = useState("metric");
+  const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -48,6 +48,9 @@ function App() {
     />
 
     <Inputs 
+      setQuery={setQuery} 
+      units={units}
+      setUnits={setUnits}
     />
 
     {weather && (
