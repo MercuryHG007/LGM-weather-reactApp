@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import './App.css';
 
 import TopButtons from './components/TopButtons';
@@ -10,12 +12,21 @@ import getFormatedWeatherData from './services/weatherService';
 
 function App() {
 
-  const fetchWeather = async () => {
-    const data = await getFormatedWeatherData({q: 'Ghaziabad'});
-    console.log(data);
-  }
+  const [query, setQuery] = useState({q: "ghaziabad"});
+  const [units, setunits] = useState("metric");
+  const [weather, setWeather] = useState(null);
 
-  fetchWeather(); 
+  useEffect(() => {
+
+    const fetchWeather = async () => {
+      await getFormatedWeatherData({...query, units})
+      .then((data) => {
+        setWeather(data);
+      });
+    };
+    fetchWeather(); 
+
+  }, [query,units]);
 
   return (
     <div
@@ -33,15 +44,30 @@ function App() {
     >
 
     <TopButtons />
-
     <Inputs />
 
-    <TimeAndLocation /> 
+    {weather && (
+      <div>
+        <TimeAndLocation 
+          weather={weather}
+        /> 
+        <TempAndDetails 
+          weather ={weather}
+        />
 
-    <TempAndDetails />
+        <Forecast 
+          title="Hourly Forecast"
+          items = {weather.hourly} 
 
-    <Forecast title="Hourly Forecast" />
-    <Forecast title="Daily Forecast" />
+        />
+        <Forecast 
+          title="Daily Forecast"
+          items = {weather.daily} 
+
+        />
+      </div>
+    )}
+
 
     </div>
   ); 

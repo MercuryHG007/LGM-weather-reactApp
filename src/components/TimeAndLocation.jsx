@@ -1,6 +1,7 @@
 import React from 'react'
+import { formatToLocalTime } from '../services/weatherService'
 
-function TimeAndLocation() {
+function TimeAndLocation({weather: {dt, timezone, name, country}}) {
     return (
         <div>
             <div
@@ -16,7 +17,7 @@ function TimeAndLocation() {
                         font-extralight
                     '
                 >
-                    Tuesday, 31 May 2022 | Local time: 12:46PM
+                    {formatToLocalTime(dt, timezone)}
                 </p>
             </div>
 
@@ -32,7 +33,7 @@ function TimeAndLocation() {
                         text-white text-3xl font-medium
                     '
                 >
-                    Karachi, PK
+                    {`${name}, ${country}`}
                 </p>
             </div>
 
